@@ -1,0 +1,43 @@
+<%= javascript_include_tag 'application' %>
+	
+<h1>Задачи</h1>
+
+
+	<% @projects.each do |project| %>
+			 
+				 <h2><%= project.title %></h2>
+			
+				 <% project.todos.each do |todo| %>
+			 
+				 <li><%= todo.text %></li>
+					 <% end %>
+			
+				 <% end %>
+
+					 
+
+  <p>
+	  <h2>Новая задача <a  id = "addform" href="javascript:{}" >+</a> </h2>
+	  
+	  <div id='formdiv'>
+<%= form_with scope: :todo, url: todos_path,:html => { :id => "my_form"} , local: true do |form|  %>
+	  <%= form.text_field :text, placeholder: "Название задачи" %>
+  </p>
+ 
+  <p>
+	<%= form.select(:project_id) do @projects.each do |c|%>
+		<%= content_tag(:option, c.title, value: c.id) %>
+	<% end %>
+<% end %>
+		
+  </p>
+ 
+  <p>
+	  <a href="javascript:{}" onclick="document.getElementById('my_form').submit(); return false;">OK</a>
+	  <a id = "hideform" href="javascript:{}" > Отмена</a>
+</form>
+  </p>
+<% end %>
+	  </div>
+
+    

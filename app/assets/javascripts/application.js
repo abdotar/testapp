@@ -13,3 +13,30 @@
 //= require rails-ujs
 //= require activestorage
 //= require_tree .
+
+
+
+(document).ready(
+	window.onload=function () {
+		
+		var a = document.getElementById('addform');
+		var b = document.getElementById('hideform');
+		
+		a.onclick = function() {
+        //производим действия
+        document.getElementById('formdiv').style.display = "block"
+        //предотвращаем переход по ссылке href
+        return false;
+    }
+		b.onclick = function() {
+        //производим действия
+        document.getElementById('formdiv').style.display = "none"
+        //предотвращаем переход по ссылке href
+        return false;
+    }
+	
+	}
+	
+	
+
+);
